@@ -1,0 +1,153 @@
+
+
+<div class="columnContainer">
+
+	<div class="leftColumn">
+		<nav class="navbar navbar-info" id="navBar">
+
+			<ul class="leftColumnNavOptions">
+				<li ng-repeat="option in navOptions" ng-click="showOptions(option, $index)" ng-class="{ 'active': $index == navSelectedIndex }">{{option}}</li>
+			</ul>
+		</nav>
+
+		<!-- ######################## -->
+		<!-- today's prompt container-->
+		<div class="promptContainer" ng-show="todayPromptOption">
+
+			<div class="todayLogoContainer">
+				<img class="homePic" ng-src="{{currentUser.profile.hat_icon}}"/>
+			</div>
+
+			<div id="promptContainerRepeat">
+				<div class="prompt" ng-class="{ 'active': $index == selectedIndex }">
+					<p ng-click="grabQuestion(question['$value'], $index)">{{question.$value}}</p>
+				</div>
+			</div>
+
+		</div>
+		<!-- ######################## -->
+
+
+		<!-- completed prompt container-->
+		<div class="promptContainer" ng-show="completedPromptOption">
+			<div class="promptContainerRepeat" ng-repeat="completed_question in completed_questions | orderBy : prompt_date">
+				<div class="prompt">
+				<!-- <p ng-click="grabQuestion(question, $index)">{{completed_question['$value']}}</p> -->
+				<p ng-class="{ 'active': $index == selectedPromptIndex }" ng-click="get_completed_prompt_response(completed_question.data_id, $index)" data-id="{{completed_question.data_id}}">{{completed_question["prompt_date"]}} <br> {{completed_question["prompt_question"]}}</p>
+				</div>
+			</div>
+		</div>
+		<!-- ######################## -->
+
+
+
+		<!-- public prompt container-->
+		<div class="promptContainer publicleftContainer" ng-show="publicPromptOption">
+			<div class="prompt" ng-class="{ 'active': $index == selectedIndex }">
+					<h3>Click the refresh icon to generate three random prompts written by fellow writers!</h3>
+					<img ng-click="generate_random_public_prompts()" src="images/refresh.png"/>
+			</div>
+		</div>
+		<!-- ######################## -->
+	</div>
+
+
+
+	<div class="rightColumn">
+		<div class="rightNavBar">
+			<div class="dateContainer">
+				<h2>{{day}} - {{month}} {{date}}, {{year}}</h2>
+			</div>
+			<div class="settingsContainer">
+
+			<div class="dropdown">
+			    <button class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+			    <img src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-32.png"/></button>
+			    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile">Profile</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="logout()">Logout</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+
+		<!-- ######################## -->
+		<!-- todays prompt container-->
+				<div class="todayPromptContainer" ng-show="todayPromptOption">
+					<textarea id="today_textarea" class="notes text" placeholder="begin writing here" ng-keyup="getWordCount(); saveUserPrompt()">{{prompt}}</textarea>
+				</div>
+				<div class="userTextPropertiesContainer" ng-show="todayPromptOption">
+					<p>Prompt By: {{currentUser.profile.pseudo}}</p>
+					<p>Word Count: <span>{{word_count}}</span></p>
+					<p>last saved: {{save_time}}</span></p>
+				</div>
+
+		<!-- ######################## -->
+
+		<!-- ######################## -->
+		<!-- completed prompt container-->
+		<div class="completedPromptContainer questionDirections" ng-show="completedPromptOption">
+			<div ng-hide="completed_prompt_selected"> 
+				<h3>Click on a prompt from the left panel to read or edit</h3>
+			</div>
+			<div class ="comleted_text_area_container" ng-show="completed_prompt_selected">
+				<textarea class="text" id="completed_textarea" readonly>{{completed_prompt}}</textarea>
+			</div>
+			<div class="userTextPropertiesContainer" ng-show="completed_prompt_selected">
+				<p>Prompt By: {{currentUser.profile.pseudo}}</p>
+				<p>Word Count: <span>{{word_count}}</span></p>
+				<p>last saved: {{save_time}}</span></p>
+			</div>
+		</div>
+		<!-- ######################## -->
+
+		<!-- ######################## -->
+		<!-- public prompt container-->
+		<div class="publicPromptContainer questionDirections" ng-show="publicPromptOption">
+			<!-- <div class="publicPromptHolder">
+				<h2>What is the best road trip or vacation you have ever taken? Who was there? Where did you go? What did you see along the way?</h2>
+				<p>I remember it as if it was yesterday what an amazing day! My family and I were driviing down from Washington DC to a small town down south in  <a> <img src="https://cdn4.iconfinder.com/data/icons/miu/24/editor-more-detail-outline-stroke-128.png"/></a></p>
+			</div><hr>
+			<div class="publicPromptHolder">
+				<h2>Write a sitcom about your life. Who will be the main players in the play and why?</h2>
+				<p>Sitcoms are perhaps one of the most amazing forms of media out there at the moment. It wasn't long ago when 
+				the only form of entertainment required one to <a> <img src="https://cdn4.iconfinder.com/data/icons/miu/24/editor-more-detail-outline-stroke-128.png"/></a></p>
+			</div><hr>
+			<div class="publicPromptHolder">
+				<h2>What is the best road trip or vacation you have ever taken? Who was there? Where did you go? What did you see along the way?</h2>
+				<p>I remember it as if it was yesterday what an amazing day, it was! My family and I were driviing down <a> <img src="https://cdn4.iconfinder.com/data/icons/miu/24/editor-more-detail-outline-stroke-128.png"/></a></p>
+			</div><hr> -->
+			<div class="publicPromptHolder">
+				<div class="public_question_container" ng-repeat="public_question in public_questions">
+					<div class="prompt_meta">
+						<img ng-src="{{public_question.hat_icon}}"/><p>{{public_question.pseudo_name}}</p>
+					</div>
+					<div class="prompt_question">
+						<h4>{{public_question.prompt_question}}</h4>
+					</div>
+					<div class="prompt_teaser">
+						<p>{{public_question.prompt}}</p>
+					</div>
+					<a href="#">(read)</a>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- ######################## -->
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+
+
+.leftColumn .selectedHat {
+	margin-top:5%;
+	width:143px;
+	height:109px;
+}
+
+.leftColumn .selectHatConatiner {
+	margin-top:10%;
+}
+
+.leftColumn .selectHatConatiner h3 {
+	text-align: center;
+	margin:0px;
+}
+
+.leftColumn .hatPicsContainer {
+	text-align: center;
+	padding:30px;
+	margin-top: 2.5%;
+}
+
+.leftColumn .hatPicsContainer img{
+	display: inline-block;
+	width:110px;
+	height:100px;
+	margin:2% 3%;
+	opacity: 0.3;
+	box-shadow:0 0 2px rgba(0,0,0,0.5);
+	padding:2%;
+}
+
+.leftColumn .hatPicsContainer img:hover {
+	opacity:1;
+	cursor: pointer;
+	background:rgba(0,0,0,0.25);
+	border:none;
+}
+
+.leftColumn .hatPicsContainer .active {
+	opacity:1;
+	background:rgba(0,0,0,0.25);
+	border:none;
+}
+
+
+
+.rightColumn .navbarHomeLogo {
+	text-decoration: none;
+	color:#C53F3F;
+}
+
+.rightColumn .navbarHomeLogo:hover {
+	color:#ff9800;
+}
+
+.rightColumn .profileContainer {
+	text-align: center;
+	width:75%;
+	margin:10% auto;
+	padding:5% 0;
+}
+
+.rightColumn .profileContainer input {
+	margin:0 auto;
+	width:50%;
+	font-size:26px;
+	margin-left:1%;
+	padding:0 1%;
+	border:none;
+	border-bottom: 1px solid #334252;
+	font-family: "medium-content-serif-font",Georgia,Cambria,"Times New Roman",Times,serif;
+	position:relative;
+	top:2px;
+	color:#334252;
+}
+
+.rightColumn .profileContainer input:nth-child(2) {
+	top:10px;
+}
+
+
+.rightColumn .profileContainer p{
+	width:60%;
+	background:lightyellow;
+	border-radius:4px;
+	font-size:14px;
+	padding:1%;
+	margin:0 auto;
+	text-align: left;
+	margin-top:1%;
+	color:#585858;
+	margin-bottom:8%;
+}
+
+#saveButton {
+  background:#CB8629;
+  width:200px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  margin-top:18%;
+  font-size:24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

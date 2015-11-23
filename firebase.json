@@ -1,0 +1,9 @@
+{
+  "firebase": "365prompts",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

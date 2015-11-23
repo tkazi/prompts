@@ -1,0 +1,51 @@
+<div class="leftColumn">
+	<div class="logoContainer">
+		<img class="selectedHat" ng-src="{{currentUser.profile.hat_icon}}"/>
+	</div>
+	<div class="selectHatConatiner">
+		<h3>Pick your writing hat!</h3>	
+		<div class="hatPicsContainer">
+			<img ng-repeat="hat in hats" ng-src="{{hat}}" ng-class="{'active':$index == hatSelectedIndex }" ng-click="select_hat(hat, $index)"/>
+		</div>
+	</div>
+</div>
+
+<div class="rightColumn">
+		<div class="rightNavBar">
+			<div class="dateContainer">
+				<!-- <img class="hatPic" src="images/cap2.png"/> -->
+				<h2><a class ="navbarHomeLogo" href="#/home">365 Prompts</a></h2>
+			</div>
+			<div class="settingsContainer">
+				<!-- <a>{{currentUser.profile.email}}</a>
+				<a><img src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-32.png"/></a>
+				<a ng-click="logout()">logout</a> -->
+
+			<div class="dropdown">
+			    <button class="dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+			    <img src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-32.png"/></button>
+			    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#/profile">Profile</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="logout()">Logout</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</div>
+
+	<div class="pseudonymContainer profileContainer">
+		<img src="https://cdn1.iconfinder.com/data/icons/mayssam/512/User-48.png"/>
+		<input class="pseudo_input" ng-keyup="profileChangesMade()" type="text" placeholder="Enter your pseudonym" value="{{currentUser.profile.pseudo}}"/>
+		<br/>
+		<p class="definePseudonym">Pseudonym is a made up name used by an author to hide his or her identity. This will be your name in 365 Prompts.</p>
+
+		<img src="https://cdn1.iconfinder.com/data/icons/mayssam/512/Envelope-48.png"/>
+		<input class="email_input" ng-keyup="profileChangesMade()" type="text" value="{{currentUser.profile.email}}"/>
+
+		<br/>
+		<button class="btn btn-info" id="saveButton" ng-click="saveProfile()" ng-show="profileEdited">save</button>
+
+	</div>
+
+	
+
+</div>
